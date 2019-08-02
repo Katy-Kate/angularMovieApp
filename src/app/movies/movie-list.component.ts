@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 import data from "./movies.js";
-import { IMAGE_PATH, IMAGE_DEFAULT } from "../data/data";
+import { IMAGE_PATH, IMAGE_DEFAULT, DATE_OPTIONS } from "../data/data";
+import { IDateOptions } from "../interfaces/DateOptions";
+import { IMovie } from "../interfaces/MovieInterface";
 
 const { results } = data;
 
@@ -12,6 +14,9 @@ export class MovieListComponent {
   pageTitle: string = "Movie List";
   img_width: number = 150;
   img_margin: number = 2;
+  date_options: IDateOptions = DATE_OPTIONS;
+  seePoster: boolean = false;
+  listFilter: string = "";
   tableHeader: string[] = [
     "Movie",
     "Language",
@@ -19,7 +24,11 @@ export class MovieListComponent {
     "Popularity",
     "Reviews"
   ];
-  movies: any[] = results;
+  movies: IMovie[] = results;
   image_default = IMAGE_DEFAULT;
   image_path = IMAGE_PATH;
+
+  toggleImage(): void {
+    this.seePoster = !this.seePoster;
+  }
 }
