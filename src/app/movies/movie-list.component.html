@@ -27,7 +27,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let movie of movies; let i = index">
+          <tr
+            *ngFor="
+              let movie of movies | movieFilter: listFilter;
+              let i = index
+            "
+          >
             <th scope="row">
               <span *ngIf="!seePoster">{{ i + 1 }}</span>
               <img
@@ -45,7 +50,12 @@
             <td>{{ movie.original_title | uppercase }}</td>
             <td>{{ movie.original_language }}</td>
             <td>{{ movie.release_date | dateTransform: date_options }}</td>
-            <td>{{ movie.popularity }}</td>
+            <td>
+              <md-review
+                [rating]="movie.popularity"
+                (ratingClicked)="onRatingClicked($event)"
+              ></md-review>
+            </td>
             <td>{{ movie.vote_count }}</td>
           </tr>
         </tbody>
