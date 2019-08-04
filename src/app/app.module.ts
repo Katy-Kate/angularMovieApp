@@ -8,7 +8,7 @@ import { ReviewComponent } from "./shared/review.component";
 
 import { DateTransformPipe } from "src/app/pipes/dateFormat.pipe";
 import { MovieFilterPipe } from "./pipes/movie-filter.pipe";
-import { MoviesService } from "./movies/movies.service";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { MoviesService } from "./movies/movies.service";
     DateTransformPipe,
     MovieFilterPipe
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent]
 })

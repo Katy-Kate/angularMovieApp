@@ -17,7 +17,7 @@ export class ReviewComponent implements OnChanges {
   @Output() ratingClicked: EventEmitter<string> = new EventEmitter<string>();
 
   ngOnChanges(): void {
-    this.reviewWidth = Math.ceil(this.rating);
+    this.reviewWidth = Math.ceil(this.rating / 10);
   }
   onClick() {
     this.ratingClicked.emit(`, this movie got a rating of ${this.rating}`);
